@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,8 +25,40 @@
 	
 	<input type="text" value="<%=sum %>">
 	
+	<h2>2. 리스트 다루기</h2>
+	<%
+		// 동물 이름 리스트
+		List<String> animalList = new ArrayList<>();
+		animalList.add("cat");
+		animalList.add("dog");
+		
+	
+	%>
+	
+	
+	
 	<div>
 		<%=sum %>
-	</div>	
+	</div>
+	
+	<ul>
+		<li><%= animalList.get(0)%></li>
+		<li><%= animalList.get(1)%></li>
+		
+		
+	</ul>
+	
+	<h2>3. 메소드 만들기</h2>
+	
+	<%! 
+		// Hello World 문자열을 리턴하는 메소드 작성
+		public String getHelloWorld() {
+			return "Hello World!!";
+		}
+	%>	
+	
+	<h3><%= getHelloWorld() %></h3>
+	
+	
 </body>
 </html>
