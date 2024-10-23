@@ -27,6 +27,7 @@ public class Test10 extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		
+		
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		
