@@ -14,25 +14,29 @@
 	
 		int number = Integer.parseInt(numberString);
 		
-		double inch = 0;
-		double yard = 0;
-		double feet = 0;
-		double meter = 0;
 		
+		// 인치, 야드, 피트, 미터
+		// inch, yard, feet, meter
+		
+		// 결과를 저장할 문자열
 		String result = "";
 		
 		for(String s:units) {
 			if(s.equals("inch")) {
-				inch = number * 1.0 / 2.54;
+				double inch = number / 2.54;
+				//double inch = number * 0.39;
 				result += inch + " in<br>";
 			} else if(s.equals("yard")) {
-				yard = number * 1.0 / 91.44;
+				double yard = number / 91.44;
+				//double yard = number * 0.010936133;
 				result += yard + " y<br>";
 			} else if(s.equals("feet")) {
-				feet = number * 1.0 / 30.48;
-				result += feet + " f<br>";
+				double feet = number / 30.48;
+				//double feet = number * 0.32808399;
+				result += feet + " ft<br>";
 			} else if(s.equals("meter")) {
-				meter = number * 1.0 / 100;
+				double meter = number / 100.0;
+				//double meter = number / 100.0;
 				result += meter + " m<br>";
 			}
 		}
@@ -42,7 +46,7 @@
 	<h3>변환 결과</h3>
 	<h4><%= number %>cm</h4>
 	<hr>
-	<h4><%= result %></h4>
+	<h4><b><%= result %></h4></b>
 	
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
