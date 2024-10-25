@@ -53,27 +53,33 @@
         } 
     };
     list.add(map);
-    String id = request.getParameter("id");
 
-    out.println(id);
-    
 	%>
 	
-	<div class="d-flex">
+	<div class="container">
 	
-	<%for(Map<String, Object> m:list) { 
-		if(m.get("id").equals("id")) {%>
-		<div class="d-2"><img width="150" height="280" src="<%= m.get("image")%>"></div>
+		<!-- 하나의 책을 지칭할 수 있는 값을 파라미터로 전달 받는다. -->
 		
+	
+	<%for(Map<String, Object> book:list) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		if(id == (Integer)book.get("id")) {%>
+		
+	<div class="d-flex">
 		<div>
-			<div class="d-2"><%= m.get("title") %></div>
-			<div><%= m.get("author") %></div>
-			<div><%= m.get("publisher") %></div>
+			<img width="100" height="200" src="<%= book.get("image")%>">
 		</div>
 		
-		<%}
+		<div class="ml-4">
+			<div class="d-2"><%= book.get("title") %></div>
+			<div><%= book.get("author") %></div>
+			<div><%= book.get("publisher") %></div>
+		</div>
 		
-	} %>
+	</div>
+		<%} %>
+	<%} %>
 	</div>
 	
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

@@ -41,13 +41,18 @@
 	
  
      <% 
-     	for(Map<String, Object> m :list) {
-     		if(m.get("menu").equals(menu)) {
+     	for(Map<String, Object> info :list) {
+     		if(menu.equals(info.get("menu"))) {
+     			// pointFilter 가 null 이면
+     			// pointFilter 가 null 이 아니면, point 가 4 초과인 결과만
+     			
+     			double point = (Double) info.get("point");
+				if(pointFilter == null || (point > 4.0))     			
      %>
      	<tr>
-     		<td><%= m.get("name") %></td>
-     		<td><%= m.get("menu") %></td>
-     		<td><%= m.get("point") %></td>
+     		<td><%= info.get("name")%></td>
+     		<td><%= info.get("menu")%></td>
+     		<td><%= info.get("point")%></td>
      	</tr>
      
      <%}

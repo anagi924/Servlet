@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+#wrap {
+	width:1200px;
+	height:800px;
+	margin:0 auto;
+}
+
+header {
+}
+nav {
+	
+	font-color: white;
+	text-decoration: none;
+}
+.main-menu {
+}
+.main-contents {
+}
