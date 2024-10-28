@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
 </head>
 <body>
 	
@@ -87,6 +89,15 @@
 	    musicInfo.put("composer", "아이유,이종훈,이채규");
 	    musicInfo.put("lyricist", "아이유");
 	    musicList.add(musicInfo);
+	    
+	    String idString = request.getParameter("id");
+	    int id = 0;
+	    if(idString != null) {
+		    id = Integer.parseInt(idString); 
+	    	
+	    }
+	    
+	    String title = request.getParameter("title");
 	%>
 	
 	<!-- 
@@ -98,11 +109,86 @@
 	-->
 	
 	<div id="wrap">
-		<header>Melong</header>
+		<header class="d-flex">
+			<div class="logo d-flex align-items-center">
+				<h1 class="text-success">Melong</h1>
+			</div>
+			<div class="search d-flex align-items-center">
+				<form class="input-group col-6" method="get" action="/jsp/test/test10/detail.jsp">
+					<input type="text" name="title" class="form-control">
+					<div class="input-group-append">
+					<button class="btn btn-success" type="submit">검색</button>
+					</div>	
+				</form>
+			</div>
+		</header>
 		
-		<form id="search">
+			<nav class="main-menu">
+				<ul class="nav">
+					<li class="nav-item"><a class="nav-link text-dark" href="#">멜롱차트</a></li>
+					<li class="nav-item"><a class="nav-link text-dark" href="#">최신음악</a></li>
+					<li class="nav-item"><a class="nav-link text-dark" href="#">장르음악</a></li>
+					<li class="nav-item"><a class="nav-link text-dark" href="#">멜롱DJ</a></li>
+					<li class="nav-item"><a class="nav-link text-dark" href="#">뮤직어워드</a></li>
+				</ul>
+			</nav>
+			<section class="main-contents">
+			<h3 class="mt-3">곡 정보</h3>
+			<% for(Map<String, Object> music:musicList)  {
+				int time = (Integer)music.get("time");
+				
+				if(title != null && title.equals(music.get("title"))
+						||( id != 0 && id == (Integer)music.get("id"))) {
+					
+			%>
+				<div class="song border border-success p-3 d-flex">
+				
+					<div>
+						<img width="100px" alt="삐삐" src="<%=music.get("thumbnail") %>" >
+					</div>
+					
+					<div class="ml-3 ">
+						<div class="display-5"><%= music.get("title") %></div>
+						<div class="text-success font-weight-bold"><%= music.get("singer") %></div>
+	
+	
+						<div class="small">
+							<div>앨범 : <%= music.get("album") %></div>
+							<div>재생시간 <%= time / 60  %> : <%= time % 60 %></div>
+							<div>작곡가 <%= music.get("composer") %></div>
+							<div>작사가 <%= music.get("lyricist") %><div>
+						</div>						
+					</div>
+					
+					
+					
+					
+				</div>
+				<%
+					} 
+				
+				}
+				
+				%>
+				
+				
+			</section>
+				<div class="song-info md-4">
+					<h3 class="">가사</h3>
+					<hr>
+					 <div>가사 정보 없음</div>
+				</div>
+			<footer class="">
+				<div class="text-secondary">
+				Copyright 2024. Melong All rights Reserved.
+				</div>
+			</footer>
 			
 		</div>
 	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+	
 </body>
 </html>
